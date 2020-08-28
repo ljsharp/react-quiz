@@ -53,7 +53,7 @@ class App extends Component {
 
   onIncrement = (id) => {
     // console.log(id)
-    const index = this.state.data.findIndex(f => f.id == id);
+    // const index = this.state.data.findIndex(f => f.id == id);
     this.setState(prevState => ({
       data: prevState.data.map(m => m.id === id ? {id: m.id, value: m.value++} : m)
     }));
@@ -61,13 +61,11 @@ class App extends Component {
   
   onDecrement = (id) => {
     // console.log(id)
-    const index = this.state.data.findIndex(f => f.id == id);
+    // const index = this.state.data.findIndex(f => f.id == id);
     // this.setState(() => { this.state.data[index].value-- })
     this.setState(prevState => ({
       data: prevState.data.map(m => m.id === id ? {id: m.id, value: m.value--} : m)
     }));
-
-    console.log(this.state.data)
     
   }
 
