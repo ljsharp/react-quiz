@@ -23,6 +23,21 @@ class Counter extends Component {
   }
 }
 
+class Total extends Component {
+  
+  totalValue = () => this.props.getData.reduce((a, b) => a + b.value, 0)
+
+  render() {
+    // const { getData } = this.props;
+    // console.log(getData)
+    return (
+      <div  className="counter">
+        <b>Total Value: {this.totalValue()}</b>
+      </div>
+    );
+  }
+}
+
 class App extends Component {
   constructor(props, context) {
     super(props, context);
@@ -31,6 +46,7 @@ class App extends Component {
         { id: 1, value: 0 },
         { id: 2, value: 0 },
         { id: 3, value: 0 },
+        { id: 4, value: 0 },
       ]
     }
   }
@@ -50,6 +66,8 @@ class App extends Component {
     this.setState(prevState => ({
       data: prevState.data.map(m => m.id === id ? {id: m.id, value: m.value--} : m)
     }));
+
+    console.log(this.state.data)
     
   }
 
@@ -62,6 +80,7 @@ class App extends Component {
             decrement={() => this.onDecrement(counter.id)} 
             key={counter.id} value={counter.value} />
         ))}
+        <Total getData={this.state.data}/>
       </div>
     );
   }
